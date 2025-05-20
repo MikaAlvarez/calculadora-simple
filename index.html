@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Simple</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="calculadora-container">
+        <h1>Calculadora Simple</h1>
+        <form action="script.php" method="POST">
+            <div class="pantalla">
+                <input type="text" name="resultado" id="resultado" readonly>
+            </div>
+            
+            <div class="botones">
+                <div class="fila">
+                    <button type="button" onclick="agregarNumero('7')">7</button>
+                    <button type="button" onclick="agregarNumero('8')">8</button>
+                    <button type="button" onclick="agregarNumero('9')">9</button>
+                    <button type="button" class="operador" onclick="agregarOperador('+')">+</button>
+                </div>
+                <div class="fila">
+                    <button type="button" onclick="agregarNumero('4')">4</button>
+                    <button type="button" onclick="agregarNumero('5')">5</button>
+                    <button type="button" onclick="agregarNumero('6')">6</button>
+                    <button type="button" class="operador" onclick="agregarOperador('-')">-</button>
+                </div>
+                <div class="fila">
+                    <button type="button" onclick="agregarNumero('1')">1</button>
+                    <button type="button" onclick="agregarNumero('2')">2</button>
+                    <button type="button" onclick="agregarNumero('3')">3</button>
+                    <button type="button" class="operador" onclick="agregarOperador('*')">×</button>
+                </div>
+                <div class="fila">
+                    <button type="button" onclick="agregarNumero('0')">0</button>
+                    <button type="button" onclick="agregarNumero('.')">.</button>
+                    <button type="button" onclick="limpiar()">C</button>
+                    <button type="button" class="operador" onclick="agregarOperador('/')">/</button>
+                </div>
+                <div class="fila">
+                    <button type="submit" class="igual" name="calcular">=</button>
+                </div>
+            </div>
+            
+            <input type="hidden" name="operacion" id="operacion">
+        </form>
+    </div>
+
+    <script>
+        let operacionActual = '';
+        
+        function agregarNumero(numero) {
+            operacionActual += numero;
+            document.getElementById('resultado').value = operacionActual;
+            document.getElementById('operacion').value = operacionActual;
+        }
+        
+        function agregarOperador(operador) {
+            operacionActual += operador;
+            document.getElementById('resultado').value = operacionActual;
+            document.getElementById('operacion').value = operacionActual;
+        }
+        
+        function limpiar() {
+            operacionActual = '';
+            document.getElementById('resultado').value = '';
+            document.getElementById('operacion').value = '';
+        }
+    </script>
+</body>
+</html>
